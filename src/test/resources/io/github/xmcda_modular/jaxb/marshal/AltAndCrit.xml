@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<m:AltAndCrit xmlns:m="myNS" xmlns:xm="http://xmcda-modular.github.io/2016/xsd">
+  <xm:myAlt>
+    <id>a01</id>
+  </xm:myAlt>
+  <xm:myCrit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xm:directedCriterionType">
+    <id>c01</id>
+    <preferenceDirection>max</preferenceDirection>
+  </xm:myCrit>
+</m:AltAndCrit>

@@ -28,9 +28,9 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import io.github.xmcda_modular.jaxb.AlternativeType;
-import io.github.xmcda_modular.jaxb.CriterionType;
-import io.github.xmcda_modular.jaxb.DirectedCriterionType;
+import io.github.xmcda_modular.jaxb.Alternative;
+import io.github.xmcda_modular.jaxb.Criterion;
+import io.github.xmcda_modular.jaxb.DirectedCriterion;
 import io.github.xmcda_modular.jaxb.ObjectFactory;
 
 public class TestMarshal {
@@ -48,25 +48,25 @@ public class TestMarshal {
 
 	@Test
 	public void testMarshal() throws JAXBException, ParserConfigurationException, TransformerException, IOException {
-		final JAXBContext jc = JAXBContext.newInstance(AlternativeType.class, CriterionType.class);
+		final JAXBContext jc = JAXBContext.newInstance(Alternative.class, Criterion.class);
 		final Marshaller marshaller = jc.createMarshaller();
 		final ObjectFactory f = new ObjectFactory();
 
 		final XmlSchema annotation = ObjectFactory.class.getPackage().getAnnotation(XmlSchema.class);
 		final String namespace = annotation.namespace();
 
-		final AlternativeType alt = f.createAlternativeType();
+		final Alternative alt = f.createAlternative();
 		alt.setId("a01");
 
 		final QName altQName = new QName(namespace, "myAlt", "xm");
-		final JAXBElement<AlternativeType> altEl = new JAXBElement<>(altQName, AlternativeType.class, alt);
+		final JAXBElement<Alternative> altEl = new JAXBElement<>(altQName, Alternative.class, alt);
 
-		final DirectedCriterionType crit = f.createDirectedCriterionType();
+		final DirectedCriterion crit = f.createDirectedCriterion();
 		crit.setId("c01");
 		crit.setPreferenceDirection("max");
 
 		final QName critQName = new QName(namespace, "myCrit", "xm");
-		final JAXBElement<CriterionType> critEl = new JAXBElement<>(critQName, CriterionType.class, crit);
+		final JAXBElement<Criterion> critEl = new JAXBElement<>(critQName, Criterion.class, crit);
 
 		final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

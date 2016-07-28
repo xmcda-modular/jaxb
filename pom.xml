@@ -13,30 +13,17 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.googlecode.maven-download-plugin</groupId>
-				<artifactId>download-maven-plugin</artifactId>
-				<version>1.3.0</version>
-				<executions>
-					<execution>
-						<id>download xmcda-modular schema</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>wget</goal>
-						</goals>
-						<configuration>
-							<url>https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd</url>
-							<outputDirectory>${basedir}/src/schema</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
 				<version>0.13.1</version>
 				<configuration>
 					<generatePackage>io.github.xmcda_modular.jaxb</generatePackage>
-					<schemaDirectory>src/schema</schemaDirectory>
+					<schemas>
+						<schema>
+							<url>https://raw.githubusercontent.com/oliviercailloux/xmcda-modular/master/xmcda-modular.xsd</url>
+						</schema>
+					</schemas>
+					<locale>en</locale>
 				</configuration>
 				<executions>
 					<execution>

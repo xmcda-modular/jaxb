@@ -28,10 +28,10 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import io.github.xmcda_modular.jaxb.Alternative;
-import io.github.xmcda_modular.jaxb.Criterion;
-import io.github.xmcda_modular.jaxb.DirectedCriterion;
-import io.github.xmcda_modular.jaxb.ObjectFactory;
+import io.github.xmcda_modular.y2016.jaxb.Alternative;
+import io.github.xmcda_modular.y2016.jaxb.Criterion;
+import io.github.xmcda_modular.y2016.jaxb.DirectedCriterion;
+import io.github.xmcda_modular.y2016.jaxb.ObjectFactory;
 
 public class TestMarshal {
 

@@ -3,4 +3,4 @@ Java source for (un)marshalling xmcda-modular files, JAXB-generated from the sch
 
 This artifact is http://search.maven.org/#search|ga|1|g%3Aio.github.xmcda-modular%20a%3Ajaxb[published] to Maven Central.
 
-See link:blob/master/src/test/java/io/github/xmcda_modular/jaxb/marshal/TestMarshal.java[TestMarshal.java] for an example.
+See link:src/test/java/io/github/xmcda_modular/jaxb/marshal/TestMarshal.java[TestMarshal.java] for an example.

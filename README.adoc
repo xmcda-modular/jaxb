@@ -1,6 +1,10 @@
 = xmcda-modular JAXB
+
+image:https://travis-ci.org/xmcda-modular/jaxb.svg?branch=master["Build Status", link="https://travis-ci.org/xmcda-modular/jaxb"]
+image:https://maven-badges.herokuapp.com/maven-central/io.github.xmcda-modular/jaxb/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.xmcda-modular%22%20a%3A%22jaxb%22"]
+
 Java source for (un)marshalling xmcda-modular files, JAXB-generated from the schema
 
-This artifact is http://search.maven.org/#search|ga|1|g%3Aio.github.xmcda-modular%20a%3Ajaxb[published] to Maven Central.
+This artifact is http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.github.xmcda-modular%20a%3Ajaxb[published] to Maven Central.
 
 See link:src/test/java/io/github/xmcda_modular/jaxb/marshal/TestMarshal.java[TestMarshal.java] for an example.

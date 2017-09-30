@@ -5,6 +5,4 @@ image:https://maven-badges.herokuapp.com/maven-central/io.github.xmcda-modular/j
 
 Java source for (un)marshalling xmcda-modular files, JAXB-generated from the schema
 
-This artifact is http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.github.xmcda-modular%20a%3Ajaxb[published] to Maven Central.
-
 See link:src/test/java/io/github/xmcda_modular/jaxb/marshal/TestMarshal.java[TestMarshal.java] for an example.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://xmcda-modular.github.io/2016/xsd" xmlns:xm="http://xmcda-modular.github.io/2016/xsd"
+	targetNamespace="http://xmcda-modular.github.io/2017/xsd" xmlns:xm="http://xmcda-modular.github.io/2017/xsd"
 	xmlns:h="http://www.w3.org/1999/xhtml" elementFormDefault="unqualified">
 	<xs:annotation>
 		<xs:documentation>
@@ -47,8 +47,8 @@
 		<xs:complexContent>
 			<xs:extension base="xm:function">
 				<xs:sequence>
-					<xs:element name="point" type="xm:point2D"
-						minOccurs="2" maxOccurs="unbounded" />
+					<xs:element name="point" type="xm:point2D" minOccurs="2"
+						maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -76,30 +76,10 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:attributeGroup name="keyedEntityReferenceAttributeGroup">
-		<xs:attribute name="ref" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Reference to named entity</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:attributeGroup>
-
-	<xs:complexType name="keyedEntityReference">
-		<xs:attributeGroup ref="xm:keyedEntityReferenceAttributeGroup"></xs:attributeGroup>
-	</xs:complexType>
-
 	<!-- Alternative -->
 	<xs:complexType name="alternative" abstract="false">
 		<xs:complexContent>
 			<xs:extension base="xm:keyedEntity" />
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="alternativeReference">
-		<xs:complexContent>
-			<xs:restriction base="xm:keyedEntityReference">
-				<xs:attributeGroup ref="xm:keyedEntityReferenceAttributeGroup"></xs:attributeGroup>
-			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
 
@@ -117,18 +97,10 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="categoryReference">
-		<xs:complexContent>
-			<xs:restriction base="xm:keyedEntityReference">
-				<xs:attributeGroup ref="xm:keyedEntityReferenceAttributeGroup"></xs:attributeGroup>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-
 	<xs:complexType name="categorySet">
 		<xs:sequence>
-			<xs:element name="category" type="xm:category"
-				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="category" type="xm:category" minOccurs="0"
+				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -141,14 +113,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="attributeReference">
-		<xs:complexContent>
-			<xs:restriction base="xm:keyedEntityReference">
-				<xs:attributeGroup ref="xm:keyedEntityReferenceAttributeGroup"></xs:attributeGroup>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-
 	<xs:complexType name="attributeSet">
 		<xs:sequence>
 			<xs:element name="attribute" type="xm:attribute"
@@ -158,10 +122,10 @@
 
 	<xs:complexType name="nominalToCardinal">
 		<xs:sequence>
-			<xs:element name="nominalFrom" type="xm:attributeReference" />
-			<xs:element name="cardinalTo" type="xm:attributeReference" />
+			<xs:element name="nominalFrom" type="xm:attribute" />
+			<xs:element name="cardinalTo" type="xm:attribute" />
 			<xs:sequence minOccurs="1" maxOccurs="unbounded">
-				<xs:element name="category" type="xm:categoryReference" />
+				<xs:element name="category" type="xm:category" />
 				<xs:element name="value" type="xs:double" />
 			</xs:sequence>
 		</xs:sequence>
@@ -251,17 +215,9 @@
 		<xs:complexContent>
 			<xs:extension base="xm:keyedEntity">
 				<xs:sequence>
-					<xs:element name="attribute" type="xm:attributeReference"></xs:element>
+					<xs:element name="attribute" type="xm:attribute"></xs:element>
 				</xs:sequence>
 			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="criterionReference">
-		<xs:complexContent>
-			<xs:restriction base="xm:keyedEntityReference">
-				<xs:attributeGroup ref="xm:keyedEntityReferenceAttributeGroup"></xs:attributeGroup>
-			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
 
@@ -282,9 +238,9 @@
 						<xs:complexType>
 							<xs:sequence>
 								<xs:choice>
-									<xs:element name="alternative" type="xm:alternativeReference"
+									<xs:element name="alternative" type="xm:alternative"
 										minOccurs="1" maxOccurs="1" />
-									<xs:element name="category" type="xm:categoryReference"
+									<xs:element name="category" type="xm:category"
 										minOccurs="1" maxOccurs="1" />
 								</xs:choice>
 								<xs:element name="utility" type="xs:double"
@@ -310,7 +266,7 @@
 			<xs:extension base="xm:criterion">
 				<xs:sequence>
 					<xs:sequence minOccurs="1" maxOccurs="unbounded">
-						<xs:element name="category" type="xm:categoryReference" />
+						<xs:element name="category" type="xm:category" />
 						<xs:element name="utility" type="xs:double" />
 					</xs:sequence>
 				</xs:sequence>
@@ -396,22 +352,22 @@
 	<!-- ValuedEntity -->
 	<xs:complexType name="valuedEntity">
 		<xs:sequence>
-			<xs:element name="entity" type="xm:keyedEntityReference" />
+			<xs:element name="entity" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:measurement" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="valuedEntitySet">
 		<xs:sequence>
-			<xs:element name="entry" type="xm:valuedEntity"
-				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="entry" type="xm:valuedEntity" minOccurs="0"
+				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- ExactValuedEntity -->
 	<xs:complexType name="exactValuedEntity">
 		<xs:sequence>
-			<xs:element name="entity" type="xm:keyedEntityReference" />
+			<xs:element name="entity" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:exactMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
@@ -427,8 +383,8 @@
 	<!-- ValuedPair -->
 	<xs:complexType name="anyValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:measurement" />
 		</xs:sequence>
 	</xs:complexType>
@@ -444,8 +400,8 @@
 	<!-- BinaryValuedPair -->
 	<xs:complexType name="binaryValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:binaryMeasurement"
 				minOccurs="0" maxOccurs="1">
 				<xs:annotation>
@@ -474,8 +430,8 @@
 	<!-- ExactValuedPair -->
 	<xs:complexType name="valuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:exactMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
@@ -499,8 +455,8 @@
 
 	<xs:complexType name="intervalValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:interval" />
 		</xs:sequence>
 	</xs:complexType>
@@ -514,8 +470,8 @@
 
 	<xs:complexType name="gaussianValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:gaussian" />
 		</xs:sequence>
 	</xs:complexType>
@@ -529,8 +485,8 @@
 
 	<xs:complexType name="nominalValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:nominalMeasurement" />
 		</xs:sequence>
 	</xs:complexType>
@@ -544,8 +500,8 @@
 
 	<xs:complexType name="impreciseNominalValuedPair">
 		<xs:sequence>
-			<xs:element name="from" type="xm:keyedEntityReference" />
-			<xs:element name="to" type="xm:keyedEntityReference" />
+			<xs:element name="from" type="xm:keyedEntity" />
+			<xs:element name="to" type="xm:keyedEntity" />
 			<xs:element name="measurement" type="xm:impreciseNominalMeasurement" />
 		</xs:sequence>
 	</xs:complexType>

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.xmcda-modular</groupId>
 	<artifactId>jaxb</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Java source for (un)marshalling xmcda-modular files, JAXB-generated from the schema.</description>
 	<url>https://github.com/xmcda-modular/jaxb</url>
@@ -50,7 +50,7 @@
 					<schemaDirectory>src/binding</schemaDirectory>
 					<catalog>src/binding/catalog-xmcda.xml</catalog>
 					<strict>false</strict>
-					<generatePackage>io.github.xmcda_modular.y2016.jaxb</generatePackage>
+					<generatePackage>io.github.xmcda_modular.y2017.jaxb</generatePackage>
 					<locale>en</locale>
 					<args>
 						<arg>-extension</arg>
